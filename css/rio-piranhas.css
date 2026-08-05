@@ -1,0 +1,526 @@
+:root {
+  --rp-primary: #00b0ec;
+  --rp-primary-deep: #07547e;
+  --rp-navy: #063a59;
+  --rp-accent: #ffe100;
+  --rp-accent-strong: #ffc400;
+  --rp-white: #ffffff;
+}
+
+.rp-brand-header {
+  position: relative;
+  z-index: 20;
+  color: var(--rp-white);
+  background: linear-gradient(135deg, var(--rp-primary), var(--rp-primary-deep));
+  box-shadow: 0 10px 30px rgba(7, 84, 126, 0.22);
+}
+
+.rp-brand-header__inner {
+  width: min(1140px, calc(100% - 32px));
+  min-height: 112px;
+  margin: 0 auto;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.rp-brand-header__logo,
+.rp-offer-trust__logo,
+.rp-footer-brand__logo {
+  display: block;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.rp-brand-header__logo {
+  width: 88px;
+  height: 88px;
+  filter: drop-shadow(0 7px 12px rgba(0, 0, 0, 0.18));
+}
+
+.rp-brand-header__copy {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.rp-brand-header__eyebrow {
+  margin-bottom: 3px;
+  color: var(--rp-accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rp-brand-header__title {
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: clamp(21px, 3vw, 30px);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.rp-brand-header__subtitle {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.rp-brand-header__cta {
+  min-height: 48px;
+  padding: 12px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: var(--rp-navy);
+  background: linear-gradient(135deg, var(--rp-accent), var(--rp-accent-strong));
+  box-shadow: 0 12px 28px rgba(255, 225, 0, 0.3);
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rp-brand-header__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 32px rgba(255, 225, 0, 0.42);
+}
+
+.rp-offer-trust {
+  color: var(--rp-white);
+  background: linear-gradient(135deg, var(--rp-primary-deep), var(--rp-navy));
+}
+
+.rp-offer-trust__inner {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.rp-offer-trust__logo {
+  width: 78px;
+  height: 78px;
+}
+
+.rp-offer-trust__title {
+  display: block;
+  color: var(--rp-accent);
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.rp-offer-trust__text {
+  display: block;
+  max-width: 650px;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.rp-footer-brand {
+  padding: 36px 16px 30px;
+  color: var(--rp-white);
+  background: var(--rp-navy);
+  text-align: center;
+}
+
+.rp-footer-brand__logo {
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 12px;
+}
+
+.rp-footer-brand__title {
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.rp-footer-brand__text {
+  max-width: 580px;
+  margin: 7px auto 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#compra.rp-catalog-section {
+  width: 100%;
+  padding: 64px 20px 72px;
+  color: var(--rp-white);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0, 176, 236, 0.22), transparent 42%),
+    var(--rp-navy) !important;
+}
+
+.rp-catalog {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.rp-catalog__header {
+  max-width: 760px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.rp-catalog__eyebrow {
+  color: var(--rp-accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rp-catalog__title {
+  margin-top: 8px;
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.rp-catalog__subtitle {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.rp-bundle-offer {
+  margin: 0 auto 32px;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 28px;
+  border: 2px solid var(--rp-accent);
+  border-radius: 24px;
+  color: var(--rp-navy);
+  background: linear-gradient(135deg, #ffffff, #fff9c4);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+.rp-bundle-offer__copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-bundle-offer__eyebrow {
+  color: var(--rp-primary-deep);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rp-bundle-offer__title {
+  margin-top: 3px;
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.rp-bundle-offer__text {
+  margin-top: 5px;
+  color: rgba(6, 58, 89, 0.74);
+  font-size: 14px;
+}
+
+.rp-bundle-offer__price {
+  color: var(--rp-primary-deep);
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.rp-bundle-offer__button {
+  min-height: 52px;
+  padding: 14px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: var(--rp-navy);
+  background: linear-gradient(135deg, var(--rp-accent), var(--rp-accent-strong));
+  box-shadow: 0 12px 28px rgba(255, 196, 0, 0.3);
+  font-size: 13px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.rp-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.rp-ebook-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.2);
+}
+
+.rp-ebook-card__media {
+  height: 350px;
+  padding: 18px 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.rp-ebook-card__media img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 20px rgba(0, 0, 0, 0.3));
+}
+
+.rp-ebook-card__body {
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rp-ebook-card__title {
+  min-height: 52px;
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.rp-ebook-card__price {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rp-ebook-card__price span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+}
+
+.rp-ebook-card__price strong {
+  color: var(--rp-accent);
+  font-family: "Space Grotesk", "Roboto", sans-serif;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.rp-ebook-card__price small {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+}
+
+.rp-ebook-card__button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: auto;
+  padding: 13px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: var(--rp-navy);
+  background: linear-gradient(135deg, var(--rp-accent), var(--rp-accent-strong));
+  box-shadow: 0 12px 28px rgba(255, 225, 0, 0.24);
+  font-size: 14px;
+  font-weight: 900;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rp-ebook-card__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(255, 225, 0, 0.36);
+}
+
+@media (max-width: 1024px) {
+  .rp-bundle-offer {
+    grid-template-columns: 1fr auto;
+  }
+
+  .rp-bundle-offer__button {
+    grid-column: 1 / -1;
+  }
+
+  .rp-catalog__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rp-ebook-card__media {
+    height: 390px;
+  }
+}
+
+.rp-video-frame {
+  position: relative;
+  width: min(100%, 430px);
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.86);
+  border-radius: 22px;
+  background: #071f2d;
+  box-shadow: 0 18px 44px rgba(6, 58, 89, 0.24);
+}
+
+.rp-store-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #071f2d;
+}
+
+img[src*="rio-piranhas-layouts-collage"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  filter: drop-shadow(0 18px 32px rgba(6, 58, 89, 0.18));
+}
+
+/* Reaplica a identidade Rio Piranhas sobre os estilos exportados do Atomicat. */
+.atomicat-button .a-btn {
+  color: var(--rp-navy) !important;
+  background: linear-gradient(135deg, var(--rp-accent), var(--rp-accent-strong)) !important;
+  box-shadow: 0 14px 34px rgba(255, 225, 0, 0.38) !important;
+}
+
+.atomicat-button .a-btn:hover {
+  color: var(--rp-navy) !important;
+  background: var(--rp-accent) !important;
+}
+
+.a-c-cont-06d96b3 > .a-e-cont,
+.a-b-cont .atomicat-container-f177a5a.a-b-o-cont,
+.a-b-cont .atomicat-container-1f235bc.a-b-o-cont,
+.a-b-cont .atomicat-container-62993b6.a-b-o-cont,
+.a-b-cont .atomicat-container-79660f9.a-b-o-cont,
+.a-b-cont .atomicat-container-58fb342.a-b-o-cont,
+.a-b-cont .atomicat-container-a83c431.a-b-o-cont,
+.a-b-cont .atomicat-container-aa3a70a.a-b-o-cont,
+.a-b-cont .atomicat-container-ae63f1d.a-b-o-cont,
+.a-b-cont .atomicat-container-1ce9f73.a-b-o-cont,
+.a-b-cont .atomicat-container-bcfa2cf.a-b-o-cont {
+  background: var(--rp-navy) !important;
+}
+
+@media (max-width: 640px) {
+  #compra.rp-catalog-section {
+    padding: 48px 16px 56px;
+  }
+
+  .rp-catalog__header {
+    margin-bottom: 28px;
+  }
+
+  .rp-catalog__subtitle {
+    font-size: 14px;
+  }
+
+  .rp-bundle-offer {
+    padding: 22px 18px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .rp-bundle-offer__price {
+    line-height: 1;
+  }
+
+  .rp-bundle-offer__button {
+    grid-column: auto;
+  }
+
+  .rp-catalog__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .rp-ebook-card__media {
+    height: min(410px, 108vw);
+  }
+
+  .rp-ebook-card__title {
+    min-height: 0;
+  }
+
+  .rp-brand-header__inner {
+    width: min(100% - 24px, 480px);
+    min-height: 96px;
+    gap: 11px;
+  }
+
+  .rp-brand-header__logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .rp-brand-header__eyebrow {
+    font-size: 9px;
+  }
+
+  .rp-brand-header__title {
+    font-size: 19px;
+  }
+
+  .rp-brand-header__subtitle {
+    font-size: 11px;
+  }
+
+  .rp-brand-header__cta {
+    display: none;
+  }
+
+  .rp-offer-trust__inner {
+    padding: 22px 8px;
+    gap: 13px;
+  }
+
+  .rp-offer-trust__logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .rp-offer-trust__text {
+    font-size: 12px;
+  }
+
+  .rp-video-frame {
+    width: min(100%, 360px);
+    border-width: 2px;
+    border-radius: 18px;
+  }
+}
