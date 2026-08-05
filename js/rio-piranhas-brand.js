@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const storeVideos = [
     {
-      src: "videos/rio-piranhas-video-9.mp4",
-      poster: "images/rio-piranhas-video-9.jpg",
+      src: "videos/rio-piranhas-vcl.mp4",
+      poster: "images/rio-piranhas-vcl.jpg",
       label: "Apresentação de layoutização real da Rio Piranhas",
     },
     {
