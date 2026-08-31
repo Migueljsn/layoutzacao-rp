@@ -53,27 +53,27 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       src: "videos/rio-piranhas-vcl.mp4",
       poster: "images/rio-piranhas-vcl.jpg",
-      label: "Apresentação de layoutização real da Rio Piranhas",
+      label: "Apresentação de layoutização real de gôndola",
     },
     {
       src: "videos/rio-piranhas-layout-01.mp4",
       poster: "images/rio-piranhas-video-01.jpg",
-      label: "Layout real da Rio Piranhas: exposição de produtos para cabelos",
+      label: "Layout real de gôndola: exposição de produtos para cabelos",
     },
     {
       src: "videos/rio-piranhas-layout-02.mp4",
       poster: "images/rio-piranhas-video-02.jpg",
-      label: "Layout real da Rio Piranhas: organização por marcas e categorias",
+      label: "Layout real de gôndola: organização por marcas e categorias",
     },
     {
       src: "videos/rio-piranhas-layout-03.mp4",
       poster: "images/rio-piranhas-video-03.jpg",
-      label: "Layout real da Rio Piranhas: exposição vertical e pontos extras",
+      label: "Layout real de gôndola: exposição vertical e pontos extras",
     },
     {
       src: "videos/rio-piranhas-layout-04.mp4",
       poster: "images/rio-piranhas-video-04.jpg",
-      label: "Layout real da Rio Piranhas: abastecimento e organização das prateleiras",
+      label: "Layout real de gôndola: abastecimento e organização das prateleiras",
     },
   ];
 
@@ -115,42 +115,19 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (layoutsCollage) {
-    layoutsCollage.src = "images/rio-piranhas-layouts-collage-v2.png";
+    layoutsCollage.src = "images/gondola-magnetica-categorias-collage.png";
     layoutsCollage.removeAttribute("srcset");
     layoutsCollage.removeAttribute("sizes");
     layoutsCollage.width = 1536;
     layoutsCollage.height = 1152;
     layoutsCollage.alt =
-      "Exemplos reais de layoutização e organização de categorias na Rio Piranhas";
-  }
-
-  const heroHeading = document.querySelector(
-    ".atomicat-heading-title-6a5a6e2 p",
-  );
-
-  if (heroHeading) {
-    heroHeading.childNodes.forEach((node) => {
-      if (node.nodeType !== Node.TEXT_NODE) {
-        return;
-      }
-
-      node.textContent = node.textContent
-        .replace("OS SEGREDOS DOS MEUS ", "OS SEGREDOS DOS ")
-        .replace(
-          "DE MAIS DE 100 SUPERMERCADOS",
-          "DE MAIS DE 350 SUPERMERCADOS E FARMÁCIAS",
-        );
-    });
+      "Exemplos reais de layoutização em hortifruti, vinhos, cervejas, pet, frios, matinais, macarrão instantâneo, óleos e churrasco de supermercado e farmácia";
   }
 
   const segmentCopyUpdates = [
     [
       "Conteúdo especializado para donos e donas de supermercados.",
       "Conteúdo especializado para supermercados e farmácias.",
-    ],
-    [
-      "ESCALE O LUCRO DO SEU SUPERMERCADO ATRAVÉS",
-      "ESCALE O LUCRO DO SEU SUPERMERCADO OU FARMÁCIA ATRAVÉS",
     ],
     [
       "EXCLUSIVO PARA DONOS E DONAS DE SUPERMERCADOS QUE",
@@ -227,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const copyUpdates = new Map([
     [
       "O QUE ALGUNS DONOS E DONAS DE SUPERMERCADOS DISSERAM.",
-      "VEJA LAYOUTS REAIS DA RIO PIRANHAS ORGANIZADOS NA PRÁTICA.",
+      "VEJA LAYOUTS REAIS ORGANIZADOS NA PRÁTICA.",
     ],
     [
       "OUÇA O DEPOIMENTO DO SAMUEL TORQUATO DONO DO SUPERMERCADO TORQUATO DE ITABUNA-BA.",
@@ -254,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     purchaseSection.innerHTML = `
       <div class="rp-catalog">
         <header class="rp-catalog__header">
-          <span class="rp-catalog__eyebrow">Biblioteca Rio Piranhas</span>
+          <span class="rp-catalog__eyebrow">Biblioteca Gôndola Magnética</span>
           <h2 class="rp-catalog__title">Escolha o ebook ideal para o seu negócio</h2>
           <p class="rp-catalog__subtitle">
             Escolha um conteúdo individual ou leve a biblioteca completa.
@@ -320,52 +297,4 @@ document.addEventListener("DOMContentLoaded", () => {
       legacyOffer?.remove();
     });
 
-  if (purchaseSection && !document.querySelector(".rp-offer-trust")) {
-    purchaseSection.insertAdjacentHTML(
-      "beforebegin",
-      `
-        <section class="rp-offer-trust" aria-label="Rio Piranhas">
-          <div class="rp-offer-trust__inner">
-            <img
-              class="rp-offer-trust__logo"
-              src="images/logo-rio-piranhas.png"
-              width="78"
-              height="78"
-              alt="Rio Piranhas"
-            >
-            <div>
-              <strong class="rp-offer-trust__title">Conteúdo prático para supermercados e farmácias</strong>
-              <span class="rp-offer-trust__text">
-                Uma iniciativa Rio Piranhas para ajudar gestores a organizar melhor seus pontos de venda e vender mais.
-              </span>
-            </div>
-          </div>
-        </section>
-      `,
-    );
-  }
-
-  const copyrightSection = document.querySelector(".atomicat-container-745140b");
-
-  if (copyrightSection && !document.querySelector(".rp-footer-brand")) {
-    copyrightSection.insertAdjacentHTML(
-      "beforebegin",
-      `
-        <section class="rp-footer-brand" aria-label="Sobre a Rio Piranhas">
-          <img
-            class="rp-footer-brand__logo"
-            src="images/logo-rio-piranhas.png"
-            width="104"
-            height="104"
-            loading="lazy"
-            alt="Rio Piranhas"
-          >
-          <div class="rp-footer-brand__title">Rio Piranhas</div>
-          <p class="rp-footer-brand__text">
-            Conteúdo e soluções pensados para fortalecer os resultados de supermercados, farmácias e varejistas.
-          </p>
-        </section>
-      `,
-    );
-  }
 });

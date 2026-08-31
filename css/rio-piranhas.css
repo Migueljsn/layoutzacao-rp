@@ -1,10 +1,53 @@
+/* Página mobile-only: todo texto centralizado (padrão do funil).
+   !important porque o Atomicat gera um <style> por bloco com
+   text-align inline/específico para cada elemento. */
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center !important;
+}
+
 :root {
-  --rp-primary: #00b0ec;
-  --rp-primary-deep: #07547e;
-  --rp-navy: #063a59;
-  --rp-accent: #ffe100;
-  --rp-accent-strong: #ffc400;
+  /* Paleta com função semântica (ciência das cores aplicada a resposta direta):
+     laranja  = ação/clique (CTA) — maior taxa de conversão em botões em testes A/B publicados;
+     dourado  = valor/oferta/destaque — luxo acessível, sem o "amarelo limão" genérico;
+     vermelho = urgência/alerta — cor de maior alcance visual, sinal universal de "atenção";
+     verde    = dinheiro/lucro/positivo — no Brasil "estar no verde" já significa lucro;
+     carvão   = autoridade/seriedade — substitui o azul-marinho por um preto quente, sem ligação com marca antiga. */
+  --rp-primary: #ff6a00;
+  --rp-primary-deep: #c2410c;
+  --rp-navy: #14100d;
+  --rp-accent: #ffb703;
+  --rp-accent-strong: #f28c00;
+  --rp-danger: #e63946;
+  --rp-danger-deep: #9e0202;
+  --rp-money: #1a9e46;
+  --rp-money-deep: #0f6b2f;
   --rp-white: #ffffff;
+}
+
+/*
+ * Página mobile-only. Em telas de tablet/desktop (min-width: 768px) o
+ * conteúdo é totalmente coberto por uma tela preta — a página só é
+ * exibida em smartphones. O bloqueio é 100% CSS (não depende de JS) e
+ * reage a resize/orientação automaticamente via media query.
+ */
+#rp-desktop-block {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  #rp-desktop-block {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    background: #000000;
+  }
 }
 
 .rp-brand-header {
@@ -410,19 +453,21 @@ img[src*="rio-piranhas-layouts-collage"] {
   filter: drop-shadow(0 18px 32px rgba(6, 58, 89, 0.18));
 }
 
-/* Reaplica a identidade Rio Piranhas sobre os estilos exportados do Atomicat. */
+/* Reaplica a identidade visual sobre os estilos exportados do Atomicat.
+   Laranja nos botões: é a cor com melhor desempenho em testes de CTA
+   (transmite ação/energia sem herdar o significado de alerta do vermelho
+   nem se confundir com o dourado usado para "oferta/valor"). */
 .atomicat-button .a-btn {
-  color: var(--rp-navy) !important;
-  background: linear-gradient(135deg, var(--rp-accent), var(--rp-accent-strong)) !important;
-  box-shadow: 0 14px 34px rgba(255, 225, 0, 0.38) !important;
+  color: var(--rp-white) !important;
+  background: linear-gradient(135deg, var(--rp-primary), var(--rp-primary-deep)) !important;
+  box-shadow: 0 14px 34px rgba(255, 106, 0, 0.4) !important;
 }
 
 .atomicat-button .a-btn:hover {
-  color: var(--rp-navy) !important;
-  background: var(--rp-accent) !important;
+  color: var(--rp-white) !important;
+  background: var(--rp-primary-deep) !important;
 }
 
-.a-c-cont-06d96b3 > .a-e-cont,
 .a-b-cont .atomicat-container-f177a5a.a-b-o-cont,
 .a-b-cont .atomicat-container-1f235bc.a-b-o-cont,
 .a-b-cont .atomicat-container-62993b6.a-b-o-cont,
