@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const checkoutUrl = "https://pay.kiwify.com.br/fhO1jUD";
+  const checkoutUrl = "https://pay.hub.la/me6I5FzSqrnBzr069QC9";
+
+  // Catálogo com os outros ebooks (Cross Merchandising, Bazar, Perfumaria etc.).
+  // Mantido pronto no código, só desligado: ainda não vamos vender esses
+  // produtos, só o Gôndola Magnética. Troque para "true" quando for hora
+  // de reativar essa seção.
+  const SHOW_OTHER_EBOOKS_CATALOG = false;
+
   const ebooks = [
     {
       title: "Aprenda mais de 300 tipos de Cross Merchandising",
@@ -44,7 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   document
-    .querySelectorAll('a[href^="https://pay.kiwify.com.br/"]')
+    .querySelectorAll(
+      'a[href^="https://pay.kiwify.com.br/"], a[href="#compra"], a[href$="#compra"]',
+    )
     .forEach((link) => {
       link.href = checkoutUrl;
     });
@@ -226,7 +235,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const purchaseSection = document.getElementById("compra");
 
-  if (purchaseSection) {
+  if (purchaseSection && !SHOW_OTHER_EBOOKS_CATALOG) {
+    // Seção desligada por enquanto: remove do DOM em vez de deixar o
+    // markup antigo (não rebrandeado) do template aparecer no lugar.
+    purchaseSection.remove();
+  } else if (purchaseSection) {
     purchaseSection.classList.add("rp-catalog-section");
     purchaseSection.innerHTML = `
       <div class="rp-catalog">

@@ -5,6 +5,14 @@ h1, h2, h3, h4, h5, h6, p {
   text-align: center !important;
 }
 
+/* Oferta "combo com todos os ebooks" (R$ 697) — desligada por enquanto,
+   só vendemos o Gôndola Magnética agora. O HTML continua intacto, é só
+   remover este bloco de CSS quando for hora de reativar essa seção. */
+.atomicat-container-ae63f1d,
+.atomicat-container-1ce9f73 {
+  display: none !important;
+}
+
 :root {
   /* Paleta com função semântica (ciência das cores aplicada a resposta direta):
      laranja  = ação/clique (CTA) — maior taxa de conversão em botões em testes A/B publicados;
@@ -180,8 +188,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .rp-footer-brand__logo {
-  width: 104px;
-  height: 104px;
+  width: 140px;
+  height: 100px;
   margin: 0 auto 12px;
 }
 
