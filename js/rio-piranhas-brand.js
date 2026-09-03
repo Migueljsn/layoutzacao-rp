@@ -19,43 +19,43 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Layout de Bazar",
       image: "images/ebooks/layout-bazar.png",
       alt: "Ebook Layout de Bazar",
-      price: "51,90",
+      price: "47,90",
     },
     {
       title: "Layout de Cereais e Farináceos",
       image: "images/ebooks/layout-cereais-farinaceos.png",
       alt: "Ebook Layout de Cereais e Farináceos",
-      price: "55,90",
+      price: "47,90",
     },
     {
       title: "Cross Merchandising — Setor de Perecíveis",
       image: "images/ebooks/cross-merchandising-pereciveis.png",
       alt: "Ebook Cross Merchandising para o Setor de Perecíveis",
-      price: "59,90",
+      price: "47,90",
     },
     {
       title: "Layout de Limpeza",
       image: "images/ebooks/layout-limpeza.png",
       alt: "Ebook Layout de Limpeza",
-      price: "63,90",
+      price: "47,90",
     },
     {
       title: "Layout de Perfumaria",
       image: "images/ebooks/layout-perfumaria.png",
       alt: "Ebook Layout de Perfumaria",
-      price: "67,90",
+      price: "47,90",
     },
     {
       title: "Guias e Processos de Layout",
       image: "images/ebooks/guias-processos-layout.png",
       alt: "Ebook Guias e Processos de Layout",
-      price: "71,90",
+      price: "47,90",
     },
     {
       title: "Layout de Vitaminas e Suplementos",
       image: "images/ebooks/layout-vitaminas-suplementos.png",
       alt: "Ebook Layout de Vitaminas e Suplementos",
-      price: "75,90",
+      price: "47,90",
     },
   ];
 
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="rp-bundle-offer__copy">
             <span class="rp-bundle-offer__eyebrow">Pacote completo</span>
             <strong class="rp-bundle-offer__title">Todos os 8 ebooks</strong>
-            <span class="rp-bundle-offer__text">De <s>R$ 495,20</s> por apenas</span>
+            <span class="rp-bundle-offer__text">De <s>R$ 383,20</s> por apenas</span>
           </div>
           <div class="rp-bundle-offer__price">R$ 147,90</div>
           <a class="rp-bundle-offer__button" href="${bundleCheckoutUrl}">
