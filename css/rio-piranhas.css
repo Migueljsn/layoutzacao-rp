@@ -13,6 +13,31 @@ h1, h2, h3, h4, h5, h6, p {
   display: none !important;
 }
 
+/* Bug do próprio template Atomicat: vários blocos usam flex-direction:row
+   sem nenhum fallback pra coluna em telas estreitas (o CSS global só dá
+   flex-wrap:wrap, que não obriga cada item a ocupar 100% da linha). Sem
+   isso, texto de headline, vídeos de depoimento, cards de benefício e o
+   FAQ inteiro ficam espremidos lado a lado, cortados pela metade. */
+@media (max-width: 700px) {
+  .atomicat-container-9fc5578 > .a-o-cont > .a-cont,
+  .atomicat-container-7aaf587 > .a-o-cont > .a-cont,
+  .a-s-d-07afl4,
+  .atomicat-container-27bea84 .a-cont.a-i-cont,
+  .atomicat-container-6eb07cd .a-cont.a-i-cont,
+  .atomicat-container-6d6d7c3 .a-cont.a-i-cont {
+    flex-direction: column !important;
+  }
+
+  .atomicat-container-9fc5578 > .a-o-cont > .a-cont > *,
+  .atomicat-container-7aaf587 > .a-o-cont > .a-cont > *,
+  .a-s-d-07afl4 > *,
+  .atomicat-container-27bea84 .a-cont.a-i-cont > *,
+  .atomicat-container-6eb07cd .a-cont.a-i-cont > *,
+  .atomicat-container-6d6d7c3 .a-cont.a-i-cont > * {
+    width: 100% !important;
+  }
+}
+
 :root {
   /* Paleta com função semântica (ciência das cores aplicada a resposta direta):
      laranja  = ação/clique (CTA) — maior taxa de conversão em botões em testes A/B publicados;
