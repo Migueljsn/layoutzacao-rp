@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const bundleCheckoutUrl = "https://pay.hub.la/5nBGiy76VkhzWoNwkeNg";
 
   // Catálogo com os outros ebooks (Cross Merchandising, Bazar, Perfumaria etc.).
-  // Reativado em 2026-09-03, com 6 ebooks (os 6 com capa já rebrandeada
-  // pra Gôndola Magnética). Troque para "false" se precisar desligar de novo.
+  // Reativado em 2026-09-03, com 8 ebooks. Troque para "false" se precisar
+  // desligar de novo.
   const SHOW_OTHER_EBOOKS_CATALOG = true;
 
   const ebooks = [
@@ -44,6 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
       image: "images/ebooks/layout-perfumaria.png",
       alt: "Ebook Layout de Perfumaria",
       price: "67,90",
+    },
+    {
+      title: "Guias e Processos de Layout",
+      image: "images/ebooks/guias-processos-layout.png",
+      alt: "Ebook Guias e Processos de Layout",
+      price: "71,90",
+    },
+    {
+      title: "Layout de Vitaminas e Suplementos",
+      image: "images/ebooks/layout-vitaminas-suplementos.png",
+      alt: "Ebook Layout de Vitaminas e Suplementos",
+      price: "75,90",
     },
   ];
 
@@ -250,8 +262,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="rp-bundle-offer">
           <div class="rp-bundle-offer__copy">
             <span class="rp-bundle-offer__eyebrow">Pacote completo</span>
-            <strong class="rp-bundle-offer__title">Todos os 6 ebooks</strong>
-            <span class="rp-bundle-offer__text">De <s>R$ 347,40</s> por apenas</span>
+            <strong class="rp-bundle-offer__title">Todos os 8 ebooks</strong>
+            <span class="rp-bundle-offer__text">De <s>R$ 495,20</s> por apenas</span>
           </div>
           <div class="rp-bundle-offer__price">R$ 147,90</div>
           <a class="rp-bundle-offer__button" href="${bundleCheckoutUrl}">
