@@ -2,10 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkoutUrl = "https://pay.hub.la/me6I5FzSqrnBzr069QC9";
 
   // Catálogo com os outros ebooks (Cross Merchandising, Bazar, Perfumaria etc.).
-  // Mantido pronto no código, só desligado: ainda não vamos vender esses
-  // produtos, só o Gôndola Magnética. Troque para "true" quando for hora
-  // de reativar essa seção.
-  const SHOW_OTHER_EBOOKS_CATALOG = false;
+  // Reativado em 2026-09-03, com 6 ebooks (os 6 com capa já rebrandeada
+  // pra Gôndola Magnética). Troque para "false" se precisar desligar de novo.
+  const SHOW_OTHER_EBOOKS_CATALOG = true;
 
   const ebooks = [
     {
@@ -37,16 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Layout de Perfumaria",
       image: "images/ebooks/layout-perfumaria.png",
       alt: "Ebook Layout de Perfumaria",
-    },
-    {
-      title: "Processos de Layouts",
-      image: "images/ebooks/processos-de-layouts.png",
-      alt: "Ebook Processos de Layouts",
-    },
-    {
-      title: "Reposição de Supermercado",
-      image: "images/ebooks/reposicao-supermercado.png",
-      alt: "Ebook Reposição de Supermercado",
     },
   ];
 
@@ -253,10 +242,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="rp-bundle-offer">
           <div class="rp-bundle-offer__copy">
             <span class="rp-bundle-offer__eyebrow">Pacote completo</span>
-            <strong class="rp-bundle-offer__title">Todos os 8 ebooks</strong>
+            <strong class="rp-bundle-offer__title">Todos os 6 ebooks</strong>
             <span class="rp-bundle-offer__text">A biblioteca completa por apenas</span>
           </div>
-          <div class="rp-bundle-offer__price">R$ 10,00</div>
+          <div class="rp-bundle-offer__price">R$ 4,90</div>
           <a class="rp-bundle-offer__button" href="${checkoutUrl}">
             QUERO O PACOTE COMPLETO
           </a>

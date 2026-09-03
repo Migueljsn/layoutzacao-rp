@@ -545,16 +545,36 @@ img[src*="rio-piranhas-layouts-collage"] {
   }
 
   .rp-catalog__grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .rp-ebook-card__media {
-    height: min(410px, 108vw);
+    height: min(220px, 42vw);
+    padding: 10px 8px 4px;
+  }
+
+  .rp-ebook-card__body {
+    padding: 12px;
   }
 
   .rp-ebook-card__title {
     min-height: 0;
+    font-size: 14px;
+  }
+
+  .rp-ebook-card__price {
+    margin: 10px 0;
+  }
+
+  .rp-ebook-card__price strong {
+    font-size: 24px;
+  }
+
+  .rp-ebook-card__button {
+    min-height: 40px;
+    padding: 10px 10px;
+    font-size: 12px;
   }
 
   .rp-brand-header__inner {
