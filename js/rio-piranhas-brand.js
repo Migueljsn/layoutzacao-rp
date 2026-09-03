@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const checkoutUrl = "https://pay.hub.la/me6I5FzSqrnBzr069QC9";
+  // Checkout específico do combo "leve tudo" (6 ebooks por R$ 147,90).
+  const bundleCheckoutUrl = "https://pay.hub.la/5nBGiy76VkhzWoNwkeNg";
 
   // Catálogo com os outros ebooks (Cross Merchandising, Bazar, Perfumaria etc.).
   // Reativado em 2026-09-03, com 6 ebooks (os 6 com capa já rebrandeada
@@ -11,31 +13,37 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Aprenda mais de 300 tipos de Cross Merchandising",
       image: "images/ebooks/aprenda-mais-de-300-cross.png",
       alt: "Ebook Aprenda mais de 300 tipos de Cross Merchandising",
+      price: "47,90",
     },
     {
       title: "Layout de Bazar",
       image: "images/ebooks/layout-bazar.png",
       alt: "Ebook Layout de Bazar",
+      price: "51,90",
     },
     {
       title: "Layout de Cereais e Farináceos",
       image: "images/ebooks/layout-cereais-farinaceos.png",
       alt: "Ebook Layout de Cereais e Farináceos",
+      price: "55,90",
     },
     {
       title: "Cross Merchandising — Setor de Perecíveis",
       image: "images/ebooks/cross-merchandising-pereciveis.png",
       alt: "Ebook Cross Merchandising para o Setor de Perecíveis",
+      price: "59,90",
     },
     {
       title: "Layout de Limpeza",
       image: "images/ebooks/layout-limpeza.png",
       alt: "Ebook Layout de Limpeza",
+      price: "63,90",
     },
     {
       title: "Layout de Perfumaria",
       image: "images/ebooks/layout-perfumaria.png",
       alt: "Ebook Layout de Perfumaria",
+      price: "67,90",
     },
   ];
 
@@ -243,10 +251,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="rp-bundle-offer__copy">
             <span class="rp-bundle-offer__eyebrow">Pacote completo</span>
             <strong class="rp-bundle-offer__title">Todos os 6 ebooks</strong>
-            <span class="rp-bundle-offer__text">A biblioteca completa por apenas</span>
+            <span class="rp-bundle-offer__text">De <s>R$ 347,40</s> por apenas</span>
           </div>
-          <div class="rp-bundle-offer__price">R$ 4,90</div>
-          <a class="rp-bundle-offer__button" href="${checkoutUrl}">
+          <div class="rp-bundle-offer__price">R$ 147,90</div>
+          <a class="rp-bundle-offer__button" href="${bundleCheckoutUrl}">
             QUERO O PACOTE COMPLETO
           </a>
         </div>
@@ -265,9 +273,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   </div>
                   <div class="rp-ebook-card__body">
                     <h3 class="rp-ebook-card__title">${ebook.title}</h3>
-                    <div class="rp-ebook-card__price" aria-label="90 centavos por ebook">
+                    <div class="rp-ebook-card__price" aria-label="Valor: R$ ${ebook.price}">
                       <span>por apenas</span>
-                      <strong>R$ 0,90</strong>
+                      <strong>R$ ${ebook.price}</strong>
                       <small>pagamento único</small>
                     </div>
                     <a class="rp-ebook-card__button" href="${checkoutUrl}">
