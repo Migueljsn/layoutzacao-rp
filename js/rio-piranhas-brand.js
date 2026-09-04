@@ -1,7 +1,121 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const checkoutUrl = "https://pay.hub.la/me6I5FzSqrnBzr069QC9";
+  // --- Tracking: gera external_id por visitante, captura fbc/fbp/UTMs e
+  // salva o lead no mesmo Supabase (tracking_leads) que o hubla-webhook usa
+  // pra casar a compra com os dados de clique — mesmo padrão do
+  // track-capture.js do Pare de Complicar. Sem isso, o link de checkout ia
+  // sem nenhum parâmetro: a Hubla não tinha UTM/fbclid pra mostrar no painel
+  // e o CAPI não tinha external_id/fbc pra enriquecer o evento de Purchase.
+  const SUPABASE_URL = "https://zzyfyjmxuswhtitjvson.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWZ5am14dXN3aHRpdGp2c29uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcxNzk1MDgsImV4cCI6MjEwMjc1NTUwOH0.ynP6vx6PHqY70DpYzmTwqrq89n4ILINydQEVyCrY8ec";
+
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(value)};expires=${d.toUTCString()};path=/`;
+  }
+
+  function uuid() {
+    if (crypto.randomUUID) return crypto.randomUUID();
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      const v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  function cleanUtmValue(value) {
+    if (!value) return value;
+    let decoded = value;
+    for (let i = 0; i < 3; i++) {
+      if (decoded.indexOf("%") === -1 && decoded.indexOf("+") === -1) break;
+      let candidate = decoded.replace(/\+/g, " ");
+      try {
+        candidate = decodeURIComponent(candidate);
+      } catch (e) {
+        break;
+      }
+      if (candidate === decoded) break;
+      decoded = candidate;
+    }
+    return decoded;
+  }
+
+  let externalId = getCookie("_dr_eid");
+  if (!externalId) {
+    externalId = uuid();
+    setCookie("_dr_eid", externalId, 30);
+  }
+
+  const fbclid = getParam("fbclid");
+  if (fbclid) {
+    setCookie("_fbc", `fb.1.${Date.now()}.${fbclid}`, 30);
+  }
+  const fbc = getCookie("_fbc");
+  const fbp = getCookie("_fbp"); // setado pelo próprio Pixel do Meta
+
+  const utms = {
+    utm_source: cleanUtmValue(getParam("utm_source")),
+    utm_medium: cleanUtmValue(getParam("utm_medium")),
+    utm_campaign: cleanUtmValue(getParam("utm_campaign")),
+    utm_content: cleanUtmValue(getParam("utm_content")),
+    utm_term: cleanUtmValue(getParam("utm_term")),
+  };
+
+  // TODO: trocar pra "?on_conflict=external_id" + Prefer
+  // "resolution=merge-duplicates,return=minimal" assim que a policy "anon
+  // can update leads" (migration 0003_tracking_leads_upsert.sql) estiver
+  // aplicada no Supabase — testado e confirmado que SEM a policy o upsert
+  // falha com 401 (RLS) pra qualquer lead, não só os repetidos. Insert
+  // simples por enquanto: funciona pra visitante novo, só falha
+  // silenciosamente (409) pra quem retorna — mesmo comportamento de hoje.
+  fetch(`${SUPABASE_URL}/rest/v1/tracking_leads`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify({
+      external_id: externalId,
+      fbc,
+      fbp,
+      fbclid,
+      user_agent: navigator.userAgent,
+      ...utms,
+      landing_url: window.location.href,
+    }),
+  }).catch(() => {
+    /* falha de rede não pode travar a LP */
+  });
+
+  // Anexa s1 (external_id), UTMs e fbclid em qualquer link de checkout —
+  // a Hubla ecoa esses query params de volta no webhook
+  // (paymentSession.params), e a própria Hubla usa utm_* pra preencher o
+  // "Rastreamento de UTM's" nativo dela.
+  function withTracking(url) {
+    const u = new URL(url);
+    u.searchParams.set("s1", externalId);
+    Object.entries(utms).forEach(([key, value]) => {
+      if (value) u.searchParams.set(key, value);
+    });
+    if (fbclid) u.searchParams.set("fbclid", fbclid);
+    return u.toString();
+  }
+
+  const checkoutUrl = withTracking("https://pay.hub.la/me6I5FzSqrnBzr069QC9");
   // Checkout específico do combo "leve tudo" (6 ebooks por R$ 147,90).
-  const bundleCheckoutUrl = "https://pay.hub.la/5nBGiy76VkhzWoNwkeNg";
+  const bundleCheckoutUrl = withTracking("https://pay.hub.la/5nBGiy76VkhzWoNwkeNg");
 
   // Sinal de intenção de compra pro Meta enquanto a ponte Hubla->CAPI
   // (evento Purchase server-side) não está pronta. Delegado em document
