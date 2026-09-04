@@ -257,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <h2 class="rp-catalog__title">Escolha o ebook ideal para o seu negócio</h2>
           <p class="rp-catalog__subtitle">
             Escolha um conteúdo individual ou leve a biblioteca completa.
+            <strong>Pagamento único, sem mensalidade — acesso vitalício.</strong>
           </p>
         </header>
         <div class="rp-bundle-offer">
@@ -265,7 +266,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <strong class="rp-bundle-offer__title">Todos os 8 ebooks</strong>
             <span class="rp-bundle-offer__text">De <s>R$ 383,20</s> por apenas</span>
           </div>
-          <div class="rp-bundle-offer__price">R$ 147,90</div>
+          <div class="rp-bundle-offer__price">
+            <span class="rp-bundle-offer__price-value">R$ 147,90</span>
+            <span class="rp-lifetime-badge">Pagamento único · Acesso vitalício</span>
+          </div>
           <a class="rp-bundle-offer__button" href="${bundleCheckoutUrl}">
             QUERO O PACOTE COMPLETO
           </a>
@@ -288,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="rp-ebook-card__price" aria-label="Valor: R$ ${ebook.price}">
                       <span>por apenas</span>
                       <strong>R$ ${ebook.price}</strong>
-                      <small>pagamento único</small>
+                      <span class="rp-lifetime-badge">Pagamento único · Acesso vitalício</span>
                     </div>
                     <a class="rp-ebook-card__button" href="${checkoutUrl}">
                       QUERO ESTE EBOOK
