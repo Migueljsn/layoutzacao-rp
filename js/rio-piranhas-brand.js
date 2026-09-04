@@ -71,13 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
     utm_term: cleanUtmValue(getParam("utm_term")),
   };
 
-  // TODO: trocar pra "?on_conflict=external_id" + Prefer
-  // "resolution=merge-duplicates,return=minimal" assim que a policy "anon
-  // can update leads" (migration 0003_tracking_leads_upsert.sql) estiver
-  // aplicada no Supabase — testado e confirmado que SEM a policy o upsert
-  // falha com 401 (RLS) pra qualquer lead, não só os repetidos. Insert
-  // simples por enquanto: funciona pra visitante novo, só falha
-  // silenciosamente (409) pra quem retorna — mesmo comportamento de hoje.
+  // Insert simples. Se o visitante já tinha um lead (cookie _dr_eid de até
+  // 30 dias), colide com o unique(external_id) e volta 409 — silenciosamente
+  // ignorado, o fbc/UTM da visita mais recente não atualiza. Limitação
+  // conhecida e aceita: consertar isso exigiria abrir SELECT pro anon nessa
+  // tabela (testado — o Postgres/PostgREST precisa enxergar a linha via
+  // SELECT pra localizar o alvo do UPDATE, mesmo com a policy de UPDATE já
+  // usando true/true), o que exporia fbc/IP/user-agent/UTM de todos os leads
+  // (as duas marcas) pra qualquer um com a chave pública anon. Não vale o
+  // trade-off: a maioria das conversões de tráfego pago vem do primeiro
+  // clique, que já é capturado corretamente.
   fetch(`${SUPABASE_URL}/rest/v1/tracking_leads`, {
     method: "POST",
     headers: {
@@ -97,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }),
   }).catch(() => {
     /* falha de rede não pode travar a LP */
-  });
+    });
 
   // Anexa s1 (external_id), UTMs e fbclid em qualquer link de checkout —
   // a Hubla ecoa esses query params de volta no webhook
