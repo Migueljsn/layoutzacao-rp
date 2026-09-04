@@ -3,6 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Checkout específico do combo "leve tudo" (6 ebooks por R$ 147,90).
   const bundleCheckoutUrl = "https://pay.hub.la/5nBGiy76VkhzWoNwkeNg";
 
+  // Sinal de intenção de compra pro Meta enquanto a ponte Hubla->CAPI
+  // (evento Purchase server-side) não está pronta. Delegado em document
+  // pra funcionar mesmo com os cards do catálogo, que são injetados
+  // depois via innerHTML.
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="https://pay.hub.la/"]');
+    if (link && typeof fbq === "function") {
+      fbq("track", "InitiateCheckout");
+    }
+  });
+
   // Catálogo com os outros ebooks (Cross Merchandising, Bazar, Perfumaria etc.).
   // Reativado em 2026-09-03, com 8 ebooks. Troque para "false" se precisar
   // desligar de novo.
